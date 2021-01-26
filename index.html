@@ -1,0 +1,134 @@
+<html>
+
+<head>
+
+    <!--SIO-->
+    <meta charset="UTF-8" />
+    <title>Fitts Law Experiment For HCI Lab 3</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmedwaleed.csed22.com/fitts-law/">
+    <meta property="og:title" content="Fitts Law Experiment">
+    <meta property="og:description" content="Measure your reaction time.">
+    <meta property="og:image" content="https://ahmedwaleed.csed22.com/fitts-law/image.jpg">
+    <meta property="og:image:width" content="1526">
+    <meta property="og:image:height" content="792">
+
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="media/favicon.png">
+    <link rel="canonical" href="https://ahmedwaleed.csed22.com/">
+
+    <!---Javascript--->
+    <!--Utilities-->
+    <script src="import/js/utilities.js"></script>
+    <script src="import/js/for-php.js"></script>
+    <script src="import/js/cookies.js"></script>
+    <script src="import/js/stopwatch.js"></script>
+    <!--Features-->
+    <script src="import/js/hints.js"></script>
+    <script src="import/js/leaderboard.js"></script>
+    <script src="import/js/ui-scripts.js"></script>
+    <script src="import/js/tutorial.js"></script>
+    <script src="import/js/buttons.js"></script>
+    <script src="import/js/game-logic.js"></script>
+    <!--ColorPicker-->
+    <script src="import/piklor/min.js"></script>
+    <script src="import/piklor/color-picker.js"></script>
+    <!--JQuery-->
+    <script src="import/jquery/jquery.min.js"></script>
+    <script src="import/jquery/fetch_ip.js"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="import/css/ui-styles.css">
+    <link rel="stylesheet" href="import/css/hints.css">
+    <link rel="stylesheet" href="import/css/buttons.css">
+    <link rel="stylesheet" href="import/piklor/custom.css">
+    <link rel="stylesheet" href="import/piklor/material-wfont.min.css">
+
+</head>
+
+<body onload="initializeButtons()">
+
+    <script>
+        window.addEventListener('resize', refresh);
+        function refresh() { location.reload(); }
+    </script>
+
+    <div class="picker-wrapper" style="width: 372px; pointer-events: none;">
+        <button class="btn btn-default">Select color</button>
+        <div class="color-picker"></div>
+    </div>
+
+    <div class="tooltip" style="top: 29; left:29; width: 165px;">
+        <img src="media/blank.png" /><span class="tooltiptext" style="width: 165px; top: 40; left: 10;">Unlocks
+            after <span class="count-down">5</span> rounds.</span>
+    </div>
+
+    <div class="tooltip" style="top: 90; right: 417;">
+        <label id="enable_2D_label">
+            2D Experiment:
+        </label><span class="tooltiptext" style="width: 160px;">Unlocks after <span class="count-down">10</span>
+            rounds.</span>
+    </div>
+
+    <label class="switch" id="enable_2D" style="pointer-events: none;">
+        <input type="checkbox" onchange="randomizeButtons()">
+        <span class="slider round"></span>
+    </label>
+
+    <div class="tooltip" style="right: 282;">
+        <img class=" raise" id="leaderboard" src="media/trophy-locked.png" alt="Leaderboard" /><span class="tooltiptext"
+            style="width: 160px;">Unlocks after <span class="count-down">20</span> rounds.</span>
+    </div>
+
+    <div id="Leaderboard_Modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Leaderboards</p>
+            </div>
+            <div class="modal-body">
+                <br>
+                <ul>
+                    <li class="modal-inside">Highscores:</li>
+                    <div id="highscores" style="overflow: hidden; text-align: center; "></div>
+                    <br>
+                    <li class="modal-inside">Respone Accuracy in one-dimensional task space:</li>
+                    <div id="results-1d" style="overflow: hidden; text-align: center; "></div>
+                    <br>
+                    <li class="modal-inside">Respone Accuracy in two-dimensional task space:</li>
+                    <div id="results-2d" style="overflow: hidden; text-align: center; "></div>
+                    <br>
+                    <li class="modal-inside">Developed by: BHAJAN KUMAR BARMAN_181IT211.</li>
+                    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="button" id="center-button" onmousedown="lockButton(this,0)">
+        <div id="empty"><img src="media/dot.png" alt="" /></div>
+        <a href="#" style="visibility: hidden;"><strong>1</strong></a>
+    </div>
+
+    <div class="button" id="right-button" onmousedown="lockButton(this,1)">
+        <div id="right-arrow"><img src="media/right_arrow.png" alt="" /></div>
+        <a href="#" style="visibility: hidden;" id="right-text"><strong>2</strong></a>
+    </div>
+
+    <div class=" button" id="left-button" onmousedown="lockButton(this,2)">
+        <div id="left-arrow"><img src="media/left_arrow.png" alt="" /></div>
+        <a href="#" style="visibility: hidden;" id="left-text"><strong>3</strong></a>
+    </div>
+
+    <div class="credits" style="left:28;">Time: <span id="time"></span></div>
+
+    
+
+</body>
+
+</html>
